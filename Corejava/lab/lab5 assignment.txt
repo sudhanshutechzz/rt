@@ -1,0 +1,113 @@
+5.1
+ANS-
+package com.cg.eis.bean;
+
+public class Employee {
+	public int id;
+	public String name;
+	public float salary;
+	public String designation;
+	public String insuranceScheme;
+	public Employee()
+	{
+		
+	}
+	public Employee(int id, String name, float salary, String designation) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.salary = salary;
+		this.designation = designation;
+		//this.insuranceScheme = insuranceScheme;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", designation=" + designation
+				+ ", insuranceScheme=" + insuranceScheme+ "]";
+	}
+
+}
+
+package com.cg.eis.service;
+
+public interface EmployeeService {
+	
+	public String getInsurance();
+	
+
+}
+
+package com.cg.eis.service;
+import com.cg.eis.bean.*;
+
+public class Service extends Employee implements EmployeeService {
+	
+	
+	
+	
+	
+	public Service() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Service(int id, String name, float salary, String designation) {
+		super(id, name, salary, designation);
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getInsurance()
+	{String in=new String();
+		if(salary>5000 && salary<20000 && designation.equals("System Associate"))
+		{insuranceScheme="Scheme C";
+		}
+		else if(salary>20000 && salary<40000 && designation.equals("Programmar"))
+		{	insuranceScheme="Scheme B";}
+		else if(salary>=40000 &&  designation.equals("Manager"))
+			{insuranceScheme="Scheme A";}
+		else if(salary<5000 && designation.equals("clerk"))
+			{insuranceScheme="NO Scheme";}
+		return insuranceScheme;
+			
+	}
+
+	@Override
+	public String toString() {
+		return "Service [id=" + id + ", name=" + name + ", salary=" + salary + ", designation=" + designation
+				+ ", insuranceScheme=" + insuranceScheme + "]";
+	}
+	
+	
+	
+
+}
+package com.cg.eis.pl;
+import java.util.Scanner;
+import com.cg.eis.bean.*;
+import com.cg.eis.service.*;
+
+public class UserInput {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the id");
+		int id=sc.nextInt();
+		System.out.println("Enter the name");
+		String name=sc.next();
+		System.out.println("Enter the salary");
+		float sal=sc.nextFloat();
+		System.out.println("Enter the designation");
+		String desi=sc.next();
+		Service ser=new Service();
+		
+		Service ser2=new Service(id,name,sal,desi);
+		ser2.getInsurance();
+		System.out.println(ser2);
+		
+		
+
+	}
+
+}

@@ -1,0 +1,153 @@
+6.1
+Ans-package Lab2;
+
+public class NoNameException extends Exception {
+	
+	public  NoNameException(String msg)
+	{
+		super(msg);
+	}
+
+}
+package Lab2;
+import java.util.Scanner;
+
+public class PersonClass {
+	public String firstName;
+	public String lastName,gender;
+
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	
+	@Override
+	public String toString() {
+		return "First Name:="+firstName+"\nlast Name:="+lastName+"\n gender:="+gender;
+		
+	}
+	public void checkName()throws NoNameException
+	{
+		if(getFirstName().equals("") && getLastName().equals(""))
+			
+			throw new NoNameException("enter the First name and last name");
+	}
+
+}
+
+package Lab2;
+
+import java.util.Scanner;
+
+public class TestPerson {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		PersonClass pc=new PersonClass();
+		pc.setFirstName("");
+		pc.getFirstName();
+		pc.setLastName("");
+		pc.getLastName();
+		pc.setGender("F");
+		pc.getGender();
+		System.out.println(pc);
+		try
+		{
+			pc.checkName();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}
+
+
+6.3
+Ans-
+package Exception;
+
+public class EmployeeException extends Exception {
+
+	public EmployeeException(String msg) {
+		super(msg);
+	}
+
+}
+
+package com.cg.eis.service;
+import com.cg.eis.bean.*;
+import Exception.*;
+
+
+public class Service extends Employee implements EmployeeService {
+	
+	
+	
+	
+	
+	public Service() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Service(int id, String name, float salary, String designation) {
+		super(id, name, salary, designation);
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getInsurance()
+	{String in=new String();
+		if(salary>5000 && salary<20000 && designation.equals("System Associate"))
+		{insuranceScheme="Scheme C";
+		}
+		else if(salary>20000 && salary<40000 && designation.equals("Programmar"))
+		{	insuranceScheme="Scheme B";}
+		else if(salary>=40000 &&  designation.equals("Manager"))
+			{insuranceScheme="Scheme A";}
+		else if(salary<5000 && designation.equals("clerk"))
+			{insuranceScheme="NO Scheme";}
+		
+		return insuranceScheme;
+			
+	}
+
+	@Override
+	public String toString() {
+		return "Service [id=" + id + ", name=" + name + ", salary=" + salary + ", designation=" + designation
+				+ ", insuranceScheme=" + insuranceScheme + "]";
+	}
+	public void Checksal() throws EmployeeException
+	{
+		if(salary<3000)
+			throw new EmployeeException("this is handle by their own");
+	}
+	
+	
+	
+
+}

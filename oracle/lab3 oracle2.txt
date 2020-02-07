@@ -1,0 +1,31 @@
+3.1
+1.
+Ans-select staff.staff_name,staff.dept_code,staff.staff_sal,dept.dept_name from staff_master staff,department_master dept where staff.dept_code=dept.dept_code 
+And staff.staff_sal>20000;
+
+2.
+Ans- select staff.staff_code,staff.staff_name,dept.dept_name,staff.mgr_code,mgr.staff_name AS "manager_name" from staff_master staff,department_master dept,staff_master mgr 
+where staff.dept_code=dept.dept_code AND staff.mgr_code=mgr.staff_code;
+
+
+3.
+Ans-select stu.student_name,stu.student_code,bookm.book_code,bookm.book_name from book_master bookm,book_transactions bookt,student_master stu 
+where bookt.book_code=bookm.book_code and bookt.student_code=stu.student_code and bookt.book_expected_return_date=sysdate;
+
+
+4.
+Ans-select staff.staff_code,staff.staff_name,dept.dept_name,dm.design_name,bm.book_code,bm.book_name,bt.book_issue_date from staff_master staff,department_master dept,designation_master dm,book_master bm,book_transactions bt
+ where dept.dept_code=staff.dept_code and dm.design_code=staff.design_code and bt.staff_code=staff.staff_code and bt.book_code=bm.book_code and (sysdate-bt.book_issue_date)<30;
+
+6.
+Ans-select staff_code,staff_name,staff_sal from staff_master where staff_sal<(select avg(staff_sal) from staff_master);
+
+7.
+Ans-select book_name,book_pub_author from book_master
+   where book_pub_author in
+  ( select book_pub_author from book_master
+   group by book_pub_author having count(*)>1)
+ 
+8.
+Ans-select staff.staff_code,staff.staff_name,dept.dept_name from staff_master staff,department_master dept where staff.staff_code in
+(select staff_code from book_transactions  group by staff_code having count(book_code)>1) and staff.dept_code=dept.dept_code;

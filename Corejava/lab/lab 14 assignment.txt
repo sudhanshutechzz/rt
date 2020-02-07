@@ -1,0 +1,142 @@
+14
+14.1
+Ans-package LambdaExpressionlab;
+
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
+public class firstQuestion {
+	public static void main(String args[])
+	{
+		
+	
+	BiFunction<Integer,Integer,Double> fun=(x,y)->
+	{double res=Math.pow(x,y);
+	return res;	
+	};
+	
+	System.out.println("Result is"+fun.apply(2,3));
+
+	}
+	
+
+}
+14.2
+Ans-package LambdaExpressionlab;
+
+public interface Second {
+String space(String str);
+}
+
+
+package LambdaExpressionlab;
+
+public class SecondQuestion {
+
+	public static void main(String[] args) {
+		Second sec=(str)->
+		{
+			String[] c=str.split("");
+			String res=String.join(" ", c);
+			return res;
+		};
+		System.out.println("Result is "+sec.space("CG"));
+
+	}
+
+}
+
+14.3
+Ans-package LambdaExpressionlab;
+
+public interface Third {
+boolean isValidAuthentication(String user,String pass);
+}
+
+package LambdaExpressionlab;
+import java.util.Scanner;
+
+public class ThirdQuestion {
+
+	public static void main(String args[])
+	{
+		Third thrd=(user,pass)->
+		{
+			if(user.equalsIgnoreCase("system")&&pass.equalsIgnoreCase("Capgemini123"))
+				return true;
+			else
+				return false;
+		};
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the username and password");
+		String user=sc.next();
+		String pass=sc.next();
+		System.out.println("Result is "+thrd.isValidAuthentication(user, pass));
+	}
+}
+14.4
+Ans-package LambdaExpressionlab;
+
+public class MethodRefrencingDemo {
+	private static int id;
+
+	public static int getId() {
+		return id;
+	}
+
+	public static void setId(int id) {
+		MethodRefrencingDemo.id = id;
+	}
+
+}
+
+
+package LambdaExpressionlab;
+
+import java.util.HashMap;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
+public class MethodReferenceMain {
+
+	public static void main(String[] args) {
+	Consumer<Integer> con=MethodRefrencingDemo::setId;
+	con.accept(10);
+	Supplier<Integer> sup=MethodRefrencingDemo::getId;
+	System.out.println(sup.get());
+			
+			
+
+	}
+
+}
+14.5
+Ans-
+package LambdaExpressionlab;
+
+public class CalcFactorial {
+	static int sum=1;
+public static int calcFactorial(int num)
+{
+	for(int i=1;i<=num;i++)
+		sum=sum*i;
+	
+	return sum;
+}
+}
+
+
+package LambdaExpressionlab;
+
+import java.util.function.Function;
+
+public class CalcFactorialMain {
+
+	public static void main(String[] args) {
+		Function<Integer,Integer> fun=CalcFactorial::calcFactorial;
+		System.out.println(fun.apply(5));
+
+	}
+
+}

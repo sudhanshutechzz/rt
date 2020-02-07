@@ -1,0 +1,6 @@
+1.1
+1.Cur_ICENTURIA,Sav_ICENTURIA,Email,Account Holder
+2.Email is an Actor because Actor can be a human being,a machine,or a software so according to use case diagram when we create the new destination then it is validated by sending the email so it is an Actor.
+
+4.Request Address Change,View Account,View,View Account,Login,Activate Destination,Create Destination,Transfer Funds
+5.Transfer funds is an extension point and Create destination and Activate destination point are the extended use cases.

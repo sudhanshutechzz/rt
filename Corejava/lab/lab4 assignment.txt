@@ -1,0 +1,131 @@
+4
+package Account;
+import java.util.Scanner;
+public class Person {
+	public String name;
+	public float age;
+
+	public String getName() {
+		return name;
+	}
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", age=" + age + "]";
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public float getAge() {
+		return age;
+	}
+	public void setAge(float age) {
+		this.age = age;
+	}
+	
+
+}
+package Account;
+import java.util.Scanner;
+import java.util.Random;
+
+public class AccountDetails {
+	private long accNum;
+	private double balance=500;
+	private Person accHolder;
+double money;
+double withDraw;
+	
+	public void deposit(double d)
+	{balance=balance+d;
+		
+	}
+	public void withdraw(double d1)
+	{balance=balance-d1;
+		
+	}
+	public void getBalance(double d2)
+	{
+		System.out.println("Balance is:"+balance);
+	}
+	public Person getAccHolder() {
+		return accHolder;
+	}
+	public void setAccHolder(Person accHolder) {
+		this.accHolder = accHolder;
+	}
+	public long getAccNum() {
+		return accNum;
+	}
+	public void setAccNum(long accNum) {
+		this.accNum = accNum;
+	}
+	public double getBalance() {
+		return balance;
+	}
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+	
+	@Override
+	public String toString()
+	{	System.out.println(getAccHolder());
+		return " Balance := " + balance;
+	}
+
+}
+package Account;
+
+public class SavingAccount extends AccountDetails{
+	public final float miniMum=500;
+	@Override
+	public void withdraw(double d1)
+	{if(getBalance()-d1>miniMum)
+	{
+		setBalance(getBalance()-d1);
+	}
+	else
+		System.out.println("Balance is not appropriate");
+		
+		
+	}
+
+}
+package Account;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class TestAccount {
+	
+	public static void main(String args[])
+	{Scanner sc=new Scanner(System.in);
+	AccountDetails ad=new SavingAccount();
+	SavingAccount sa=new SavingAccount();
+		Person p1=new Person();
+	
+	
+		System.out.println("Enter the Name");
+		p1.setName(sc.next());
+		System.out.println("Enter the age");
+		p1.setAge(sc.nextFloat());
+		
+		ad.setAccHolder(p1);
+		
+		System.out.println("Enter the account number");
+		ad.setAccNum(new Random().nextLong());
+		System.out.println(ad.getAccNum());
+		
+		System.out.println("Enter the balance");
+		ad.setBalance(sc.nextDouble());
+		System.out.println("Enter the money you want to deposit");
+		ad.deposit(sc.nextDouble());
+		System.out.println("Enter the money you want to withdraw");
+		ad.withdraw(sc.nextDouble());
+		
+		System.out.println(ad);
+		
+		
+		
+	}
+
+}

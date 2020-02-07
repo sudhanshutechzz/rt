@@ -1,0 +1,37 @@
+7.1
+Ans-package Collection;
+
+import java.util.Arrays;
+
+public class ProductName {
+
+	public static void main(String[] args) {
+		String str[]= {"Side mirrior","Stand","Seat Cover","Head Lights"};
+		Arrays.sort(str);
+		System.out.println("Sorted list is:"+Arrays.toString(str));
+	
+
+	}
+
+}
+7.2-
+Ans-import java.awt.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class ProductName {
+
+	public static void main(String[] args) {
+		ArrayList<String> li=new ArrayList<String>();
+		li.add("Side mirrior");
+		li.add("Stand");
+		li.add("Seat Cover");
+		li.add("Head Lights");
+		Collections.sort(li);
+		for(String name:li)
+		{
+			System.out.println("Product names are:"+name);
+		}
+}
+}

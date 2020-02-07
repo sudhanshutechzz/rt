@@ -1,0 +1,10 @@
+Lab 3
+3.1
+1. MainOptionForm,TransferFundsController,TransferFundsForm,ICurAcctBankSystem,Customer,Account,TransferDetails,Savings Account,Current Account
+2. customerId,firstName,lastName
+3.calculate TransationFee(),execute Transfer(),getCustomer()
+4. a)Account,Savings Account,Current Account where Account is the parent class of Savings Account and Current Account.
+b)TransferDetails,TransferFundsController,Customer where TransferDetails and TransferFundsController are in dependency and TransferDetails and Customer are in dependency.
+c)MainOptionForm,TransferFundsForm are in association and TransferFundsController and Customer are also in association and  TransferFundsController and Account  are also in association and TransferFundsController and ICurAcctBankSystem are also in association
+5.Yes, many accounts can hold by one customer.No, joints accounts are not permitted as per this diagram.
+6.We can change the multiplicity relationship between Account and Customer with Composition. 
